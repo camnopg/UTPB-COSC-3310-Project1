@@ -433,8 +433,9 @@ public class UInt {
             this.bits[0] = false;
         }
         else {
-            u.negate();
-            this.add(u);
+            UInt tempU = u.clone();
+            tempU.negate();
+            this.add(tempU);
             // Omit the carry
             boolean[] temp = this.bits;
             this.length -= 1;
@@ -561,10 +562,12 @@ public class UInt {
     
     // For testing individual methods
     public static void main(String args[]) {
-    UInt a = new UInt(80);
-    UInt b = new UInt(10);
-    UInt c = UInt.mul(a, b);
+    UInt a = new UInt(212);
+    UInt b = new UInt(157);
+    UInt c = UInt.sub(a, b);
     System.out.println(c.toInt());
+    System.out.println(a.toInt());
+    System.out.println(b.toInt());
 
     }
 }
